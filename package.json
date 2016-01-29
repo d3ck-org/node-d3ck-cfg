@@ -1,6 +1,6 @@
 {
   "name": "node-d3ck-cfg",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Lightweight configuration management based on JSON files",
   "main": "index.js",
   "engines": {
