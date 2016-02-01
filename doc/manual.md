@@ -130,8 +130,9 @@ Of course, you can mix flat and nested structures.
 ### Search paths for configuration files
 
 __When__ (all of this settings are optional)...
-  * Enviroment variable `D3CK_STAGE` is set to `test`
-      *  To set the variable in the _bash_ shell (Linux, Mac), run the following command: `export D3CK_STAGE="test"`
+  * Enviroment variable `STAGE` is set to `test`
+      *  To set the variable in the _bash_ shell (Linux, Mac), run the following command: `export STAGE="test"`
+  * Enviroment variable `D3CK_STAGE` is set to `prod`
   * Enviroment variable `NODED3CK_STAGE` is set to `prod`
   * `init()` parameter `stage` is set to `dev`
   * Enviroment variable `D3CK_CFG_DIRS` is set to `/home/foo/etc5`
@@ -143,8 +144,8 @@ And...
   * node.js script is `/home/foo/app.js`
 
 __Then__...
-  * The stage is `dev` because the enviroment variable `NODED3CK_STAGE` overwrites
-    `D3CK_STAGE` and `init()` overwrites `NODED3CK_STAGE`.
+  * The stage is `dev` because the enviroment variable `D3CK_STAGE` overwrites `STAGE` and
+    `NODED3CK_STAGE` overwrites `D3CK_STAGE` and `init()` overwrites `NODED3CK_STAGE`.
 
 And...
 

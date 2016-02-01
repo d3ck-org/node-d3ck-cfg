@@ -27,17 +27,16 @@ Initialization: Reads and exports the configuration values.
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [opts] | <code>object</code> |  | Options (see below) |
-| [opts.stage] | <code>string</code> |  | Set the stage, e.g. 'dev' to read cfg.dev.json     after cfg.json |
-| [opts.cfgDirs] | <code>Array.&lt;string&gt;</code> | <code>[]</code> | Additional cfg directories that contain     JSON files |
-| [opts.verbose] | <code>boolean</code> | <code>false</code> | Enable verbose mode (prints the cfg     search path) |
+| [opts.stage] | <code>string</code> |  | Set the stage, e.g. 'dev' to read cfg.dev.json after cfg.json |
+| [opts.cfgDirs] | <code>Array.&lt;string&gt;</code> | <code>[]</code> | Additional cfg directories that contain JSON files |
+| [opts.verbose] | <code>boolean</code> | <code>false</code> | Enable verbose mode (prints the cfg search path) |
 | [opts.enc] | <code>string</code> | <code>&quot;utf-8&quot;</code> | Encoding of JSON cfg files |
-| [opts.myFilePath] | <code>string</code> | <code>&quot;process.argv[1]&quot;</code> | Script path, only needed     when process.argv was changed (e.g. by a command line module) |
-| [data] | <code>object</code> | <code>{}</code> | Additional cfg settings that overwrite the JSON     values |
+| [opts.myFilePath] | <code>string</code> | <code>&quot;process.argv[1]&quot;</code> | Script path, only needed when process.argv was changed (e.g. by a command line module) |
+| [data] | <code>object</code> | <code>{}</code> | Additional cfg settings that overwrite the JSON values |
 
 **Example**  
 ```js
-// set stage to 'prod' (reads cfg.json and cfg.prod.json files) and
-// add two directories to cfg search path
+// set stage to 'prod' (reads cfg.json and cfg.prod.json files) and add two directories to cfg search path
 init({stage: 'prod', cfgDirs: ['/home/foo/etc1', '/home/foo/etc2']})
 // set stage to 'dev' and set the 'foo' and 'bar' cfg value
 init({stage: 'dev'}, {'foo': 1, 'bar': 2})
@@ -51,8 +50,8 @@ Get configuration value.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [name] | <code>string</code> | Name of the cfg value, return all values if name     isn't set |
-| [default] | <code>object</code> | Return this value (string, object, ...) if cfg     value doesn't exist |
+| [name] | <code>string</code> | Name of the cfg value, return all values if name isn't set |
+| [default] | <code>object</code> | Return this value (string, object, ...) if cfg value doesn't exist |
 
 **Example**  
 ```js
@@ -72,8 +71,8 @@ Get configuration value (join mode).
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [...part] | <code>string</code> | Name parts of the cfg value (all parts except the     first will be capitalized), return all values if no part is set |
-| [default] | <code>object</code> | Return the value of object's 'd' property (the     'd' property is mandatory) if cfg value doesn't exist |
+| [...part] | <code>string</code> | Name parts of the cfg value (all parts except the first will be capitalized), return all values if no part is set |
+| [default] | <code>object</code> | Return the value of object's 'd' property (the 'd' property is mandatory) if cfg value doesn't exist |
 
 **Example**  
 ```js
@@ -97,9 +96,9 @@ Set configuration value.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| name | <code>string</code> &#124; <code>object</code> | Name of the cfg value (string mode) or object     with cfg values and related names (object mode) |
+| name | <code>string</code> &#124; <code>object</code> | Name of the cfg value (string mode) or object with cfg values and related names (object mode) |
 | [value] | <code>object</code> | Value (only needed but mandatory in string mode) |
-| [default] | <code>object</code> | Default if 'value' isn't defined (only needed in     string mode) |
+| [default] | <code>object</code> | Default if 'value' isn't defined (only needed in string mode) |
 
 **Example**  
 ```js

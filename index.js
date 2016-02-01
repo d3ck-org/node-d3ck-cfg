@@ -14,20 +14,14 @@ var log = function log (msg) {
 /**
 * Initialization: Reads and exports the configuration values.
 * @arg {object} [opts] - Options (see below)
-* @arg {string} [opts.stage] - Set the stage, e.g. 'dev' to read cfg.dev.json
-*     after cfg.json
-* @arg {string[]} [opts.cfgDirs=[]] - Additional cfg directories that contain
-*     JSON files
-* @arg {boolean} [opts.verbose=false] - Enable verbose mode (prints the cfg
-*     search path)
+* @arg {string} [opts.stage] - Set the stage, e.g. 'dev' to read cfg.dev.json after cfg.json
+* @arg {string[]} [opts.cfgDirs=[]] - Additional cfg directories that contain JSON files
+* @arg {boolean} [opts.verbose=false] - Enable verbose mode (prints the cfg search path)
 * @arg {string} [opts.enc=utf-8] - Encoding of JSON cfg files
-* @arg {string} [opts.myFilePath=process.argv[1]] - Script path, only needed
-*     when process.argv was changed (e.g. by a command line module)
-* @arg {object} [data={}] - Additional cfg settings that overwrite the JSON
-*     values
+* @arg {string} [opts.myFilePath=process.argv[1]] - Script path, only needed when process.argv was changed (e.g. by a command line module)
+* @arg {object} [data={}] - Additional cfg settings that overwrite the JSON values
 * @example
-* // set stage to 'prod' (reads cfg.json and cfg.prod.json files) and
-* // add two directories to cfg search path
+* // set stage to 'prod' (reads cfg.json and cfg.prod.json files) and add two directories to cfg search path
 * init({stage: 'prod', cfgDirs: ['/home/foo/etc1', '/home/foo/etc2']})
 * // set stage to 'dev' and set the 'foo' and 'bar' cfg value
 * init({stage: 'dev'}, {'foo': 1, 'bar': 2})
@@ -39,7 +33,7 @@ function init (opts, moreData) {
   data = moreData || {}
   if (opts.verbose) verbose = true
   opts.stage = (opts.stage || process.env.NODED3CK_STAGE ||
-                process.env.D3CK_STAGE)
+                process.env.D3CK_STAGE || process.env.STAGE)
   if (opts.stage) data._stage = opts.stage
   data._cfgFiles = getCfgFiles(opts)
   data._cfgFiles.forEach(function (cfgFile) {
@@ -56,10 +50,8 @@ function init (opts, moreData) {
 
 /**
 * Get configuration value.
-* @arg {string} [name] - Name of the cfg value, return all values if name
-*     isn't set
-* @arg {object} [default] - Return this value (string, object, ...) if cfg
-*     value doesn't exist
+* @arg {string} [name] - Name of the cfg value, return all values if name isn't set
+* @arg {object} [default] - Return this value (string, object, ...) if cfg value doesn't exist
 * @return {object|null} All cfg values, one value or null
 * @example
 * // returns the whole cfg
@@ -78,10 +70,8 @@ function get (name, dflt) {
 
 /**
 * Get configuration value (join mode).
-* @arg  {...string} [part] - Name parts of the cfg value (all parts except the
-*     first will be capitalized), return all values if no part is set
-* @arg {object} [default] - Return the value of object's 'd' property (the
-*     'd' property is mandatory) if cfg value doesn't exist
+* @arg  {...string} [part] - Name parts of the cfg value (all parts except the first will be capitalized), return all values if no part is set
+* @arg {object} [default] - Return the value of object's 'd' property (the 'd' property is mandatory) if cfg value doesn't exist
 * @return {object|null} All cfg values, one value or null
 * @example
 * // returns the whole cfg, same as cfg.get()
@@ -115,11 +105,9 @@ function jget () {
 
 /**
 * Set configuration value.
-* @arg {(string|object)} name - Name of the cfg value (string mode) or object
-*     with cfg values and related names (object mode)
+* @arg {(string|object)} name - Name of the cfg value (string mode) or object with cfg values and related names (object mode)
 * @arg {object} [value] - Value (only needed but mandatory in string mode)
-* @arg {object} [default] - Default if 'value' isn't defined (only needed in
-*     string mode)
+* @arg {object} [default] - Default if 'value' isn't defined (only needed in string mode)
 * @return {object|null} All cfg values, one value (that can be null)
 * @example
 * // STRING MODE
