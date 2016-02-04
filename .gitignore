@@ -16,5 +16,4 @@ node_modules/
 .~lock.*
 *~
 .drone.yml
-.travis.yml
 npm-debug.log
