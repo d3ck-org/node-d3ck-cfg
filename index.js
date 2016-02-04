@@ -91,7 +91,7 @@ function jget () {
   if (name != null) name = String(name)
   var dflt = null
   if (args.length > 0) {
-    let ilk = Object.prototype.toString.call(args[args.length - 1])
+    var ilk = Object.prototype.toString.call(args[args.length - 1])
     if (ilk === '[object Object]') dflt = args.pop().d
     args.forEach(function (arg) {
       if (arg != null) {
